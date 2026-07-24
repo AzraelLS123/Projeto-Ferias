@@ -1,1 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+
+    /* Imagem de fundo */
+    background-image: url("../imagens/VideoCapture_20260724-191710.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+header {
+    text-align: center;
+    padding: 30px;
+}
+
+main {
+    text-align: center;
+    padding: 40px;
+}
+
+section {
+    background: rgba(0, 0, 0, 0.6);
+    width: 80%;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+}
