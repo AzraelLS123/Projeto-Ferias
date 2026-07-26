@@ -1,59 +1,82 @@
-// Animação ao rolar
+// Animação das seções
 
-const elementos = document.querySelectorAll("section");
+const secoes=document.querySelectorAll("section");
 
-elementos.forEach(sec=>{
+secoes.forEach(sec=>{
+
     sec.classList.add("oculto");
+
 });
 
-const observar = new IntersectionObserver((entradas)=>{
+const observer=new IntersectionObserver((entries)=>{
 
-    entradas.forEach(entrada=>{
+    entries.forEach(entry=>{
 
-        if(entrada.isIntersecting){
+        if(entry.isIntersecting){
 
-            entrada.target.classList.add("mostrar");
+            entry.target.classList.add("aparecer");
 
         }
 
     });
 
-},{
-    threshold:0.2
-});
+},{threshold:.2});
 
-elementos.forEach(sec=>observar.observe(sec));
+secoes.forEach(sec=>observer.observe(sec));
 
-// Efeito de clique nos botões
 
-const botoes = document.querySelectorAll(".btn");
+// Botões
 
-botoes.forEach(botao=>{
+const botoes=document.querySelectorAll(".btn");
 
-    botao.addEventListener("click",()=>{
+botoes.forEach(btn=>{
 
-        botao.innerHTML="Abrindo...";
+    btn.addEventListener("mouseenter",()=>{
 
-        setTimeout(()=>{
+        btn.style.boxShadow="0 0 20px #4fc3ff";
 
-            if(botao.href.includes("youtube")){
+    });
 
-                botao.innerHTML="YouTube";
+    btn.addEventListener("mouseleave",()=>{
 
-            }else{
-
-                botao.innerHTML="Google Drive";
-
-            }
-
-        },1000);
+        btn.style.boxShadow="";
 
     });
 
 });
 
-// Ano automático no rodapé
 
-const footer = document.querySelector("footer p");
+// Efeito no título da aba
 
-footer.innerHTML = `© ${new Date().getFullYear()} - ALL FICTION. Todos os direitos reservados.`;
+const titulos=[
+"ALL FICTION",
+"📚 ALL FICTION",
+"🎬 ALL FICTION"
+];
+
+let indice=0;
+
+setInterval(()=>{
+
+    document.title=titulos[indice];
+
+    indice++;
+
+    if(indice>=titulos.length){
+
+        indice=0;
+
+    }
+
+},1800);
+
+
+// Ano automático
+
+const rodape=document.querySelector("footer p");
+
+if(rodape){
+
+rodape.innerHTML=`© ${new Date().getFullYear()} - ALL FICTION. Todos os direitos reservados.`;
+
+}
